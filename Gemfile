@@ -8,6 +8,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-linkedin' 
 
 gem 'coveralls', require: false
+gem 'simplecov', :require => false, :group => :test
 
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
