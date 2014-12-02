@@ -7,6 +7,12 @@ before_install:
   - psql -c 'create database db_test' -U postgres
   - bundle exec rake db:migrate --trace
 
+# whitelist
+branches:
+  only:
+    - master
+    - simplecov
+
 language: ruby
 rvm:
   - 2.0.0-p0
