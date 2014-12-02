@@ -1,0 +1,12 @@
+env:
+  - DB=postgresql
+
+before_install:
+  - gem install bundler
+  - bundle install
+  - psql -c 'create database db_test' -U postgres
+  - bundle exec rake db:migrate --trace
+
+language: ruby
+rvm:
+  - 2.0.0-p0
