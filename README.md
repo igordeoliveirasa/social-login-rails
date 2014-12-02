@@ -1,7 +1,7 @@
 social-login-rails
 ==================
 [![Build Status](https://travis-ci.org/igordeoliveirasa/social-login-rails.svg?branch=master)](https://travis-ci.org/igordeoliveirasa/social-login-rails)
-[![Coverage Status](https://coveralls.io/repos/igordeoliveirasa/social-login-rails/badge.png)](https://coveralls.io/r/igordeoliveirasa/social-login-rails)
+[![Coverage Status](https://img.shields.io/coveralls/igordeoliveirasa/social-login-rails.svg)](https://coveralls.io/r/igordeoliveirasa/social-login-rails?branch=master)
 [![Code Climate](https://codeclimate.com/github/igordeoliveirasa/social-login-rails/badges/gpa.svg)](https://codeclimate.com/github/igordeoliveirasa/social-login-rails)
 
 Running the Server
