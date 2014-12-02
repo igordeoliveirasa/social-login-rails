@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/igordeoliveirasa/social-login-rails-facebook.svg?branch=master)](https://travis-ci.org/igordeoliveirasa/social-login-rails-facebook)
-[![Coverage Status](https://coveralls.io/repos/igordeoliveirasa/social-login-rails-facebook/badge.png)](https://coveralls.io/r/igordeoliveirasa/social-login-rails-facebook)
+[![Build Status](https://travis-ci.org/igordeoliveirasa/social-login-rails.svg?branch=master)](https://travis-ci.org/igordeoliveirasa/social-login-rails)
+[![Coverage Status](https://coveralls.io/repos/igordeoliveirasa/social-login-rails/badge.png)](https://coveralls.io/r/igordeoliveirasa/social-login-rails)
 
-social-login-rails-facebook
+social-login-rails
 ==================
 
 
