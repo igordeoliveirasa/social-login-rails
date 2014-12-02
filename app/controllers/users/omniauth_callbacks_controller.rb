@@ -28,7 +28,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def twitter
     auth = env["omniauth.auth"]
-    
+
     @user = User.find_for_twitter_oauth(request.env["omniauth.auth"],current_user)
     if @user.persisted?
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success"
