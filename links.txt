@@ -1,0 +1,2 @@
+# Facebook Configuration
+https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
