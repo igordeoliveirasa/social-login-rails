@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'activerecord-session_store'
+
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 gem 'coveralls', require: false
 
