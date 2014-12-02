@@ -13,14 +13,9 @@ Installing bundles:
 bundle install
 ```
 
-Configuring the devise:
+Updating the database:
 ```console
-rails generate devise:install
-```
-
-When you are done, you are ready to add Devise to any of your models using the generator:
-```console
-rails generate devise User
+rake db:migrate
 ```
 
 Now, you are able to start the server:
