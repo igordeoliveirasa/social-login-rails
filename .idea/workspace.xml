@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93bf1b29-bcb9-423a-95ff-5fd5721632a5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/controllers/omniauth_callbacks_controller_spec.rb" afterPath="$PROJECT_DIR$/spec/controllers/omniauth_callbacks_controller_spec.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/social-login-rails.iml" afterPath="$PROJECT_DIR$/.idea/social-login-rails.iml" />
     </list>
     <ignored path="social-login-rails.iws" />
@@ -20,10 +21,11 @@
     <SUITE FILE_PATH="coverage/social-login-rails@_render_facebook__social_login_rails.coverage" NAME=" render facebook: social-login-rails Coverage Results" MODIFIED="1417568616464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="social-login-rails" />
     <SUITE FILE_PATH="coverage/social-login-rails@_render_facebook__social_login_rails__1_.coverage" NAME=" render facebook: social-login-rails (1) Coverage Results" MODIFIED="1417568713948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="social-login-rails" />
     <SUITE FILE_PATH="coverage/social-login-rails@Run_spec__omniauth_callbacks_controller_spec___social_login_rails.coverage" NAME="Run spec 'omniauth_callbacks_controller_spec': social-login-rails Coverage Results" MODIFIED="1417573643261" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="social-login-rails" />
-    <SUITE FILE_PATH="coverage/social-login-rails@blabla_blabla__social_login_rails.coverage" NAME="blabla blabla: social-login-rails Coverage Results" MODIFIED="1417573937091" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="social-login-rails" />
+    <SUITE FILE_PATH="coverage/social-login-rails@blabla_blabla__social_login_rails.coverage" NAME="blabla blabla: social-login-rails Coverage Results" MODIFIED="1417574771963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="social-login-rails" />
     <SUITE FILE_PATH="coverage/social-login-rails@Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1417568820223" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" MODULE_NAME="social-login-rails" />
     <SUITE FILE_PATH="coverage/social-login-rails@test_should_get_index__social_login_rails.coverage" NAME="test_should_get_index: social-login-rails Coverage Results" MODIFIED="1417564148512" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="social-login-rails" />
-    <SUITE FILE_PATH="coverage/social-login-rails@blabla__social_login_rails.coverage" NAME="blabla: social-login-rails Coverage Results" MODIFIED="1417573861038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="social-login-rails" />
+    <SUITE FILE_PATH="coverage/social-login-rails@blabla2__social_login_rails.coverage" NAME="blabla2: social-login-rails Coverage Results" MODIFIED="1417574928164" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="social-login-rails" />
+    <SUITE FILE_PATH="coverage/social-login-rails@blabla__social_login_rails.coverage" NAME="blabla: social-login-rails Coverage Results" MODIFIED="1417574842633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="social-login-rails" />
     <SUITE FILE_PATH="coverage/social-login-rails@All_specs_in_spec__social_login_rails.coverage" NAME="All specs in spec: social-login-rails Coverage Results" MODIFIED="1417565273034" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="social-login-rails" />
     <SUITE FILE_PATH="coverage/social-login-rails@All_tests_in_test__social_login_rails.coverage" NAME="All tests in test: social-login-rails Coverage Results" MODIFIED="1417562960678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="social-login-rails" />
   </component>
@@ -42,8 +44,8 @@
       <file leaf-file-name="omniauth_callbacks_controller_spec.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spec/controllers/omniauth_callbacks_controller_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7556008" vertical-offset="79" max-vertical-offset="570">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.73319757" vertical-offset="0" max-vertical-offset="705">
+              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -272,7 +274,7 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="SearchEverywhereHistoryKey" value="ae&#9;null&#9;null" />
   </component>
-  <component name="RunManager" selected="RSpec.blabla blabla: social-login-rails">
+  <component name="RunManager" selected="RSpec.blabla2: social-login-rails">
     <configuration default="false" name="Run spec 'omniauth_callbacks_controller_spec': social-login-rails" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
       <predefined_log_file id="RUBY_RSPEC" enabled="true" />
       <module name="social-login-rails" />
@@ -376,6 +378,43 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="blabla" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
+      <RunnerSettings RunnerId="RubyRunner" />
+      <ConfigurationWrapper RunnerId="RubyRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="blabla2: social-login-rails" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
+      <predefined_log_file id="RUBY_RSPEC" enabled="true" />
+      <module name="social-login-rails" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs>
+        <env name="RAILS_ENV" value="test" />
+        <env name="JRUBY_OPTS" value="-X+O" />
+      </envs>
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/controllers/omniauth_callbacks_controller_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="blabla2" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
@@ -529,7 +568,7 @@
       <envs />
       <method />
     </configuration>
-    <list size="7">
+    <list size="8">
       <item index="0" class="java.lang.String" itemvalue="Rails.Production: social-login-rails" />
       <item index="1" class="java.lang.String" itemvalue="Rails.Development: social-login-rails" />
       <item index="2" class="java.lang.String" itemvalue="Rake.test: social-login-rails" />
@@ -537,12 +576,14 @@
       <item index="4" class="java.lang.String" itemvalue="RSpec.Run spec 'omniauth_callbacks_controller_spec': social-login-rails" />
       <item index="5" class="java.lang.String" itemvalue="RSpec.blabla blabla: social-login-rails" />
       <item index="6" class="java.lang.String" itemvalue="RSpec.blabla: social-login-rails" />
+      <item index="7" class="java.lang.String" itemvalue="RSpec.blabla2: social-login-rails" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="RSpec.blabla blabla: social-login-rails" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="RSpec.blabla2: social-login-rails" />
         <item index="1" class="java.lang.String" itemvalue="RSpec.blabla: social-login-rails" />
-        <item index="2" class="java.lang.String" itemvalue="RSpec.Run spec 'omniauth_callbacks_controller_spec': social-login-rails" />
+        <item index="2" class="java.lang.String" itemvalue="RSpec.blabla blabla: social-login-rails" />
+        <item index="3" class="java.lang.String" itemvalue="RSpec.Run spec 'omniauth_callbacks_controller_spec': social-login-rails" />
       </list>
     </recent_temporary>
   </component>
@@ -993,8 +1034,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/controllers/omniauth_callbacks_controller_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7556008" vertical-offset="79" max-vertical-offset="570">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.73319757" vertical-offset="0" max-vertical-offset="705">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
           <folding />
         </state>
       </provider>
