@@ -25,7 +25,7 @@ RSpec.describe Users::OmniauthCallbacksController, :type => :controller do
   describe "blabla" do
     it "blabla" do
       get :facebook
-
+      expect(response).to redirect_to("/dashboard/index")
     end
   end
 
