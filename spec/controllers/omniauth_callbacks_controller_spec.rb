@@ -61,7 +61,7 @@ RSpec.describe Users::OmniauthCallbacksController, :type => :controller do
     before do
       request.env["devise.mapping"] = Devise.mappings[:user]
       OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
-                                                                             :provider => 'facebook',
+                                                                             :provider => 'google_oauth2',
                                                                              :uid => '123545',
                                                                              :info => { :name => '', },
                                                                          })
@@ -81,7 +81,7 @@ RSpec.describe Users::OmniauthCallbacksController, :type => :controller do
     before do
       request.env["devise.mapping"] = Devise.mappings[:user]
       OmniAuth.config.mock_auth[:linkedin] = OmniAuth::AuthHash.new({
-                                                                             :provider => 'google_oauth2',
+                                                                             :provider => 'linkedin',
                                                                              :uid => '123545',
                                                                              :info => { :email => 'igordeoliveirasa@gmail.com',  :name => '', },
                                                                          })
@@ -98,7 +98,7 @@ RSpec.describe Users::OmniauthCallbacksController, :type => :controller do
     before do
       request.env["devise.mapping"] = Devise.mappings[:user]
       OmniAuth.config.mock_auth[:linkedin] = OmniAuth::AuthHash.new({
-                                                                        :provider => 'facebook',
+                                                                        :provider => 'linkedin',
                                                                         :uid => '123545',
                                                                         :info => { :name => '', },
                                                                     })
@@ -117,7 +117,7 @@ RSpec.describe Users::OmniauthCallbacksController, :type => :controller do
     before do
       request.env["devise.mapping"] = Devise.mappings[:user]
       OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
-                                                                        :provider => 'google_oauth2',
+                                                                        :provider => 'twitter',
                                                                         :uid => '123545',
                                                                         :info => { :name => '' },
                                                                         :extra => { :raw_info => { :name => '' } }
@@ -136,7 +136,7 @@ RSpec.describe Users::OmniauthCallbacksController, :type => :controller do
     before do
       request.env["devise.mapping"] = Devise.mappings[:user]
       OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
-                                                                        :provider => 'facebook',
+                                                                        :provider => 'twitter',
                                                                         :uid => nil,
                                                                         :info => { :name => '', },
                                                                         :extra => {:raw_info => {}}
