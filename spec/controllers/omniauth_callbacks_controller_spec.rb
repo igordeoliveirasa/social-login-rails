@@ -98,10 +98,10 @@ RSpec.describe Users::OmniauthCallbacksController, :type => :controller do
     before do
       request.env["devise.mapping"] = Devise.mappings[:user]
       OmniAuth.config.mock_auth[:linkedin] = OmniAuth::AuthHash.new({
-                                                                             :provider => 'facebook',
-                                                                             :uid => '123545',
-                                                                             :info => { :name => '', },
-                                                                         })
+                                                                        :provider => 'facebook',
+                                                                        :uid => '123545',
+                                                                        :info => { :name => '', },
+                                                                    })
       request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:linkedin]
       get :linkedin
     end
@@ -110,5 +110,5 @@ RSpec.describe Users::OmniauthCallbacksController, :type => :controller do
     it { expect(response).to redirect_to(new_user_registration_path) }
 
   end
-
+  
 end
