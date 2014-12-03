@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="3166077865">
+    <data-source source="LOCAL" name="Rails social-login-rails: development" uuid="65701f89-36d0-47d1-852e-b1f3aa368e70">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1/db_environment</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails social-login-rails: test" uuid="758c7274-9bf0-4a42-bcb1-0143adf6ca35">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1/db_test</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails social-login-rails: production" uuid="8d3c8fda-ed91-473e-9166-338a92c03002">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1/db_production</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>
