@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Rails social-login-rails: development" uuid="65701f89-36d0-47d1-852e-b1f3aa368e70">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails social-login-rails: test" uuid="758c7274-9bf0-4a42-bcb1-0143adf6ca35">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails social-login-rails: production" uuid="8d3c8fda-ed91-473e-9166-338a92c03002">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>
