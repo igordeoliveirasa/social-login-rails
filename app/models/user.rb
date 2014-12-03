@@ -18,13 +18,6 @@ class User < ActiveRecord::Base
     user
   end
 
-  def self.from_omniauth(auth)
-    user = self.find_or_create_user(auth.provider, auth.uid, auth.info.name, auth.info.email)
-  end
-
-  def self.find_for_google_oauth2(auth, signed_in_resource=nil)
-    user = self.find_or_create_user(auth.provider, auth.uid, auth.info.name, auth.info.email)
-  end
 
   def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
     email = nil
@@ -32,6 +25,17 @@ class User < ActiveRecord::Base
       email = auth.uid + "@twitter.com"
     end
     user = self.find_or_create_user(auth.provider, auth.uid, auth.extra.raw_info.name, email)
+  end
+
+
+
+
+  def self.from_omniauth(auth)
+    user = self.find_or_create_user(auth.provider, auth.uid, auth.info.name, auth.info.email)
+  end
+
+  def self.find_for_google_oauth2(auth, signed_in_resource=nil)
+    user = self.find_or_create_user(auth.provider, auth.uid, auth.info.name, auth.info.email)
   end
 
   def self.connect_to_linkedin(auth, signed_in_resource=nil)
