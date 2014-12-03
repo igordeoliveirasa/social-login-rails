@@ -35,11 +35,17 @@ class User < ActiveRecord::Base
     if user
       return user
     else
-      registered_user = User.where(:email => auth.uid + "@twitter.com").first
+
+      email = nil
+      if auth.uid
+        email = auth.uid + "@twitter.com"
+      end
+
+      registered_user = User.where(:email => email).first
       if registered_user
         return registered_user
       else
-        user = User.create(name:auth.extra.raw_info.name, provider:auth.provider, uid:auth.uid, email:auth.uid+"@twitter.com", password:Devise.friendly_token[0,20],)
+        user = User.create(name:auth.extra.raw_info.name, provider:auth.provider, uid:auth.uid, email:email, password:Devise.friendly_token[0,20],)
       end
     end
   end

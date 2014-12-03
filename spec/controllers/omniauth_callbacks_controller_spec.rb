@@ -131,4 +131,23 @@ RSpec.describe Users::OmniauthCallbacksController, :type => :controller do
     it { expect(response).to redirect_to(dashboard_index_path) }
   end
 
+
+  describe "twitter: do not login unregistered authorization" do
+    before do
+      request.env["devise.mapping"] = Devise.mappings[:user]
+      OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
+                                                                        :provider => 'facebook',
+                                                                        :uid => nil,
+                                                                        :info => { :name => '', },
+                                                                        :extra => {:raw_info => {}}
+                                                                    })
+      request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
+      get :twitter
+    end
+
+    it { should_not be_user_signed_in }
+    it { expect(response).to redirect_to(new_user_registration_path) }
+
+  end
+
 end
