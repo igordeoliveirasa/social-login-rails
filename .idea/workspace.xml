@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="93bf1b29-bcb9-423a-95ff-5fd5721632a5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/controllers/omniauth_callbacks_controller_spec.rb" afterPath="$PROJECT_DIR$/spec/controllers/omniauth_callbacks_controller_spec.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/social-login-rails.iml" afterPath="$PROJECT_DIR$/.idea/social-login-rails.iml" />
     </list>
     <ignored path="social-login-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -20,8 +19,8 @@
     <SUITE FILE_PATH="coverage/social-login-rails@Development__social_login_rails.coverage" NAME="Development: social-login-rails Coverage Results" MODIFIED="1417563640046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="social-login-rails" />
     <SUITE FILE_PATH="coverage/social-login-rails@_render_facebook__social_login_rails.coverage" NAME=" render facebook: social-login-rails Coverage Results" MODIFIED="1417568616464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="social-login-rails" />
     <SUITE FILE_PATH="coverage/social-login-rails@_render_facebook__social_login_rails__1_.coverage" NAME=" render facebook: social-login-rails (1) Coverage Results" MODIFIED="1417568713948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="social-login-rails" />
-    <SUITE FILE_PATH="coverage/social-login-rails@Run_spec__omniauth_callbacks_controller_spec___social_login_rails.coverage" NAME="Run spec 'omniauth_callbacks_controller_spec': social-login-rails Coverage Results" MODIFIED="1417573363104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="social-login-rails" />
-    <SUITE FILE_PATH="coverage/social-login-rails@blabla_blabla__social_login_rails.coverage" NAME="blabla blabla: social-login-rails Coverage Results" MODIFIED="1417573391603" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="social-login-rails" />
+    <SUITE FILE_PATH="coverage/social-login-rails@Run_spec__omniauth_callbacks_controller_spec___social_login_rails.coverage" NAME="Run spec 'omniauth_callbacks_controller_spec': social-login-rails Coverage Results" MODIFIED="1417573488240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="social-login-rails" />
+    <SUITE FILE_PATH="coverage/social-login-rails@blabla_blabla__social_login_rails.coverage" NAME="blabla blabla: social-login-rails Coverage Results" MODIFIED="1417573457615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="social-login-rails" />
     <SUITE FILE_PATH="coverage/social-login-rails@Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1417568820223" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" MODULE_NAME="social-login-rails" />
     <SUITE FILE_PATH="coverage/social-login-rails@test_should_get_index__social_login_rails.coverage" NAME="test_should_get_index: social-login-rails Coverage Results" MODIFIED="1417564148512" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="social-login-rails" />
     <SUITE FILE_PATH="coverage/social-login-rails@All_specs_in_spec__social_login_rails.coverage" NAME="All specs in spec: social-login-rails Coverage Results" MODIFIED="1417565273034" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="social-login-rails" />
@@ -42,8 +41,8 @@
       <file leaf-file-name="omniauth_callbacks_controller_spec.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spec/controllers/omniauth_callbacks_controller_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8248472" vertical-offset="0" max-vertical-offset="585">
-              <caret line="27" column="57" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
+            <state vertical-scroll-proportion="0.7250509" vertical-offset="79" max-vertical-offset="570">
+              <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -262,7 +261,7 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="SearchEverywhereHistoryKey" value="ae&#9;null&#9;null" />
   </component>
-  <component name="RunManager" selected="RSpec.blabla blabla: social-login-rails">
+  <component name="RunManager" selected="RSpec.Run spec 'omniauth_callbacks_controller_spec': social-login-rails">
     <configuration default="false" name="Run spec 'omniauth_callbacks_controller_spec': social-login-rails" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
       <predefined_log_file id="RUBY_RSPEC" enabled="true" />
       <module name="social-login-rails" />
@@ -492,8 +491,8 @@
     </list>
     <recent_temporary>
       <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="RSpec.blabla blabla: social-login-rails" />
-        <item index="1" class="java.lang.String" itemvalue="RSpec.Run spec 'omniauth_callbacks_controller_spec': social-login-rails" />
+        <item index="0" class="java.lang.String" itemvalue="RSpec.Run spec 'omniauth_callbacks_controller_spec': social-login-rails" />
+        <item index="1" class="java.lang.String" itemvalue="RSpec.blabla blabla: social-login-rails" />
       </list>
     </recent_temporary>
   </component>
@@ -522,7 +521,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30394924" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39922482" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32945737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32945737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -936,8 +935,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/controllers/omniauth_callbacks_controller_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8248472" vertical-offset="0" max-vertical-offset="585">
-          <caret line="27" column="57" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
+        <state vertical-scroll-proportion="0.7250509" vertical-offset="79" max-vertical-offset="570">
+          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
           <folding />
         </state>
       </provider>
