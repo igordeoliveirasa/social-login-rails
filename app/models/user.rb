@@ -5,63 +5,37 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
 	 :omniauthable, :omniauth_providers => [:facebook, :google_oauth2, :twitter, :linkedin] 
 
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name   # assuming the user model has a name
-      user.image = auth.info.image # assuming the user model has an image
+  def self.find_or_create_user(provider, uid, name, email)
+    user = nil
+    if ["google_oauth2", "linkedin"].include?(provider)
+      user = User.where(:email => email).first
+    else
+      user = User.where(:provider => provider, :uid => uid).first
     end
-  end
-
-  def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
-    data = access_token.info
-    user = User.where(:email => data["email"]).first
-
-    # Uncomment the section below if you want users to be created if they don't exist
     unless user
-      user = User.create(name: data["name"],
-        email: data["email"],
-        password: Devise.friendly_token[0,20]
-      )
+      user = User.create(name:name, provider:provider, uid:uid, email:email, password:Devise.friendly_token[0,20],)
     end
-
     user
   end
 
+  def self.from_omniauth(auth)
+    user = self.find_or_create_user(auth.provider, auth.uid, auth.info.name, auth.info.email)
+  end
+
+  def self.find_for_google_oauth2(auth, signed_in_resource=nil)
+    user = self.find_or_create_user(auth.provider, auth.uid, auth.info.name, auth.info.email)
+  end
 
   def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    if user
-      return user
-    else
-
-      email = nil
-      if auth.uid
-        email = auth.uid + "@twitter.com"
-      end
-
-      registered_user = User.where(:email => email).first
-      if registered_user
-        return registered_user
-      else
-        user = User.create(name:auth.extra.raw_info.name, provider:auth.provider, uid:auth.uid, email:email, password:Devise.friendly_token[0,20],)
-      end
+    email = nil
+    if auth.uid
+      email = auth.uid + "@twitter.com"
     end
+    user = self.find_or_create_user(auth.provider, auth.uid, auth.extra.raw_info.name, email)
   end
 
   def self.connect_to_linkedin(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    if user
-      return user
-    else
-      registered_user = User.where(:email => auth.info.email).first
-      if registered_user
-        return registered_user
-      else
-        user = User.create(name:auth.info.first_name, provider:auth.provider, uid:auth.uid, email:auth.info.email, password:Devise.friendly_token[0,20],)
-      end
-    end
+    user = self.find_or_create_user(auth.provider, auth.uid, auth.info.first_name, auth.info.email)
   end   
 
 end
