@@ -9,7 +9,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     name = nil
     email = nil
 
-    if ["facebook", "google_oauth2"].include?(auth.provider)
+    if ["facebook", "google_oauth2", "github"].include?(auth.provider)
       name = auth.info.name
       email = auth.info.email
     elsif auth.provider == "twitter"
@@ -52,6 +52,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def linkedin
+    authenticate
+  end
+
+  def github
     authenticate
   end
 

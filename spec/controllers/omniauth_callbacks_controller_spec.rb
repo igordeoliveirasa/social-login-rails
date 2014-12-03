@@ -117,11 +117,11 @@ RSpec.describe Users::OmniauthCallbacksController, :type => :controller do
     before do
       request.env["devise.mapping"] = Devise.mappings[:user]
       OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
-                                                                        :provider => 'twitter',
-                                                                        :uid => '123545',
-                                                                        :info => { :name => '' },
-                                                                        :extra => { :raw_info => { :name => '' } }
-                                                                    })
+                                                                       :provider => 'twitter',
+                                                                       :uid => '123545',
+                                                                       :info => { :name => '' },
+                                                                       :extra => { :raw_info => { :name => '' } }
+                                                                   })
 
       request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
       get :twitter
@@ -136,13 +136,49 @@ RSpec.describe Users::OmniauthCallbacksController, :type => :controller do
     before do
       request.env["devise.mapping"] = Devise.mappings[:user]
       OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
-                                                                        :provider => 'twitter',
-                                                                        :uid => nil,
-                                                                        :info => { :name => '', },
-                                                                        :extra => {:raw_info => {}}
-                                                                    })
+                                                                       :provider => 'twitter',
+                                                                       :uid => nil,
+                                                                       :info => { :name => '', },
+                                                                       :extra => {:raw_info => {}}
+                                                                   })
       request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
       get :twitter
+    end
+
+    it { should_not be_user_signed_in }
+    it { expect(response).to redirect_to(new_user_registration_path) }
+
+  end
+
+  # ========================================================
+
+  describe "github: login" do
+    before do
+      request.env["devise.mapping"] = Devise.mappings[:user]
+      OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+                                                                             :provider => 'github',
+                                                                             :uid => '123545',
+                                                                             :info => { :email => 'igordeoliveirasa@gmail.com',  :name => '', },
+                                                                         })
+
+      request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:github]
+      get :github
+    end
+
+    it { should be_user_signed_in }
+    it { expect(response).to redirect_to(dashboard_index_path) }
+  end
+
+  describe "github: do not login unregistered authorization" do
+    before do
+      request.env["devise.mapping"] = Devise.mappings[:user]
+      OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+                                                                             :provider => 'google_oauth2',
+                                                                             :uid => '123545',
+                                                                             :info => { :name => '', },
+                                                                         })
+      request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:github]
+      get :github
     end
 
     it { should_not be_user_signed_in }
