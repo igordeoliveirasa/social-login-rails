@@ -110,5 +110,25 @@ RSpec.describe Users::OmniauthCallbacksController, :type => :controller do
     it { expect(response).to redirect_to(new_user_registration_path) }
 
   end
-  
+
+  # ========================================================
+
+  describe "twitter: login" do
+    before do
+      request.env["devise.mapping"] = Devise.mappings[:user]
+      OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
+                                                                        :provider => 'google_oauth2',
+                                                                        :uid => '123545',
+                                                                        :info => { :name => '' },
+                                                                        :extra => { :raw_info => { :name => '' } }
+                                                                    })
+
+      request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
+      get :twitter
+    end
+
+    it { should be_user_signed_in }
+    it { expect(response).to redirect_to(dashboard_index_path) }
+  end
+
 end
