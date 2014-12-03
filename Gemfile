@@ -10,6 +10,9 @@ gem 'omniauth-linkedin'
 gem 'coveralls', require: false
 gem 'simplecov', :require => false, :group => :test
 
+gem "codeclimate-test-reporter", group: :test, require: nil
+
+
 gem 'devise'
 
 group :development, :test do
