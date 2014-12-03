@@ -5,7 +5,7 @@
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/db_environment</jdbc-url>
+      <jdbc-url>jdbc:postgresql://127.0.0.1/db_environment</jdbc-url>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails social-login-rails: test" uuid="758c7274-9bf0-4a42-bcb1-0143adf6ca35">
