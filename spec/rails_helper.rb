@@ -7,7 +7,14 @@ SimpleCov.start :rails do
   add_filter "/spec/"
 end
 
+
 require 'spec_helper'
+
+
+require 'coveralls'
+Coveralls.wear!
+
+
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
