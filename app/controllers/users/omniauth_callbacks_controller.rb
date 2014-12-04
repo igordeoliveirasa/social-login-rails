@@ -6,17 +6,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def convert_omniauth_to_auth(auth)
 
-    ret = {"provider" => auth.provider, "uid" => auth.uid}
+    ret = {"provider" => auth.provider, "uid" => auth.uid, "name" => nil, "email" => nil}
 
     if ["facebook", "google_oauth2", "github"].include?(auth.provider)
       ret['name'] = auth.info.name
       ret['email'] = auth.info.email
     elsif auth.provider == "twitter"
       ret['name'] = auth.extra.raw_info.name
-      ret['email'] = nil
-      if auth.uid
-        ret['email'] = auth.uid + "@twitter.com"
-      end
+      ret['email'] = auth.uid + "@twitter.com" if auth.uid
     elsif auth.provider == "linkedin"
       ret['name'] = auth.info.first_name
       ret['email'] = auth.info.email
