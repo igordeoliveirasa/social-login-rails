@@ -4,7 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   @session_keys = {"facebook" => "devise.facebook_data", "google_oauth2" => "devise.google_data",
                     "twitter" => "devise.twitter_uid", "linkedin" => "devise.linkedin_uid"}
 
-  def get_login_attributes(auth)
+  def convert_omniauth_to_auth(auth)
 
     ret = {"provider" => auth.provider, "uid" => auth.uid}
 
@@ -25,24 +25,23 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     ret
   end
 
-  def find_user_with_omniauth(auth)
-    # search
+  def find_user_with_auth(auth)
     user = User.find(auth["provider"], auth["uid"], auth["name"], auth["email"] )
   end
 
-  def create_user_with_omniauth(auth)
+  def create_user_with_auth(auth)
     user = User.create(provider:auth["provider"], uid:auth["uid"], name:auth["name"], email:auth["email"], password:Devise.friendly_token[0,20],)
   end
 
   def authenticate
-    auth = get_login_attributes(request.env["omniauth.auth"])
+    auth = convert_omniauth_to_auth(request.env["omniauth.auth"])
 
     # search
-    user = find_user_with_omniauth(auth)
+    user = find_user_with_auth(auth)
 
     # creating user if nil
     unless user
-      user = create_user_with_omniauth(auth)
+      user = create_user_with_auth(auth)
     end
 
     if user.persisted?
