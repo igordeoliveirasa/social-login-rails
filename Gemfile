@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'dotenv-rails', :groups => [:development, :test]
+#gem 'dotenv-rails', :groups => [:development, :test]
 
 gem 'activerecord-session_store'
 
