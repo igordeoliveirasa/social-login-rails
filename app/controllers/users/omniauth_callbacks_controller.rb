@@ -27,22 +27,21 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
 
   def authenticate
-    auth = request.env["omniauth.auth"]
-    login_attributes = get_login_attributes(auth)
+    auth = get_login_attributes(request.env["omniauth.auth"])
 
     # search
-    user = User.find(login_attributes["provider"], login_attributes["uid"], login_attributes["name"], login_attributes["email"] )
+    user = User.find(auth["provider"], auth["uid"], auth["name"], auth["email"] )
 
     # creating user if nil
     unless user
-      user = User.create(provider:login_attributes["provider"], uid:login_attributes["uid"], name:login_attributes["name"], email:login_attributes["email"], password:Devise.friendly_token[0,20],)
+      user = User.create(provider:auth["provider"], uid:auth["uid"], name:auth["name"], email:auth["email"], password:Devise.friendly_token[0,20],)
     end
 
     if user.persisted?
       sign_in_and_redirect user, :event => :authentication #this will throw if @user is not activated
-      set_flash_message(:notice, :success, :kind => auth.provider) if is_navigational_format?
+      set_flash_message(:notice, :success, :kind => auth['provider']) if is_navigational_format?
     else
-      session_key = :session_keys[auth.provider]
+      session_key = :session_keys[auth['provider']]
       session[session_key] = request.env["omniauth.auth"]
       redirect_to new_user_registration_url
     end
