@@ -5,15 +5,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
 	 :omniauthable, :omniauth_providers => [:facebook, :google_oauth2, :twitter, :linkedin, :github]
 
-  def self.find_or_create_user(provider, uid, name, email)
+  def self.find(provider, uid, name, email)
     user = User.where(:email => email).first
 
     unless user
       user = User.where(:provider => provider, :uid => uid).first
-    end
-
-    unless user
-      user = User.create(name:name, provider:provider, uid:uid, email:email, password:Devise.friendly_token[0,20],)
     end
 
     user

@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'dotenv-rails', :groups => [:development, :test]
+
 gem 'activerecord-session_store'
 
 gem 'omniauth-facebook'
@@ -19,7 +21,6 @@ gem 'devise'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
