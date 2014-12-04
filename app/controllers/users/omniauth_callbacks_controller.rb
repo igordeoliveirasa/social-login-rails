@@ -25,16 +25,24 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     ret
   end
 
+  def find_user_with_omniauth(auth)
+    # search
+    user = User.find(auth["provider"], auth["uid"], auth["name"], auth["email"] )
+  end
+
+  def create_user_with_omniauth(auth)
+    user = User.create(provider:auth["provider"], uid:auth["uid"], name:auth["name"], email:auth["email"], password:Devise.friendly_token[0,20],)
+  end
 
   def authenticate
     auth = get_login_attributes(request.env["omniauth.auth"])
 
     # search
-    user = User.find(auth["provider"], auth["uid"], auth["name"], auth["email"] )
+    user = find_user_with_omniauth(auth)
 
     # creating user if nil
     unless user
-      user = User.create(provider:auth["provider"], uid:auth["uid"], name:auth["name"], email:auth["email"], password:Devise.friendly_token[0,20],)
+      user = create_user_with_omniauth(auth)
     end
 
     if user.persisted?
