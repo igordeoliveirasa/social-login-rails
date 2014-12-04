@@ -6,15 +6,16 @@ class User < ActiveRecord::Base
 	 :omniauthable, :omniauth_providers => [:facebook, :google_oauth2, :twitter, :linkedin, :github]
 
   def self.find_or_create_user(provider, uid, name, email)
-    user = nil
-    if ["google_oauth2", "linkedin"].include?(provider)
-      user = User.where(:email => email).first
-    else
+    user = User.where(:email => email).first
+
+    unless user
       user = User.where(:provider => provider, :uid => uid).first
     end
+
     unless user
       user = User.create(name:name, provider:provider, uid:uid, email:email, password:Devise.friendly_token[0,20],)
     end
+
     user
   end
 
