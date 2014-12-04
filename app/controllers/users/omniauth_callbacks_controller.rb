@@ -6,25 +6,23 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def get_login_attributes(auth)
 
-    name = nil
-    email = nil
+    ret = {"provider" => auth.provider, "uid" => auth.uid}
 
     if ["facebook", "google_oauth2", "github"].include?(auth.provider)
-      name = auth.info.name
-      email = auth.info.email
+      ret['name'] = auth.info.name
+      ret['email'] = auth.info.email
     elsif auth.provider == "twitter"
-      name = auth.extra.raw_info.name
-      email = nil
+      ret['name'] = auth.extra.raw_info.name
+      ret['email'] = nil
       if auth.uid
-        email = auth.uid + "@twitter.com"
+        ret['email'] = auth.uid + "@twitter.com"
       end
     elsif auth.provider == "linkedin"
-      name = auth.info.first_name
-      email = auth.info.email
+      ret['name'] = auth.info.first_name
+      ret['email'] = auth.info.email
     end
 
-    { "provider" => auth.provider, "uid" => auth.uid, "name"=>name, "email" => email }
-
+    ret
   end
 
 
@@ -33,15 +31,15 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     login_attributes = get_login_attributes(auth)
 
     # search
-    @user = User.find(login_attributes["provider"], login_attributes["uid"], login_attributes["name"], login_attributes["email"] )
+    user = User.find(login_attributes["provider"], login_attributes["uid"], login_attributes["name"], login_attributes["email"] )
 
     # creating user if nil
-    unless @user
-      @user = User.create(provider:login_attributes["provider"], uid:login_attributes["uid"], name:login_attributes["name"], email:login_attributes["email"], password:Devise.friendly_token[0,20],)
+    unless user
+      user = User.create(provider:login_attributes["provider"], uid:login_attributes["uid"], name:login_attributes["name"], email:login_attributes["email"], password:Devise.friendly_token[0,20],)
     end
 
-    if @user.persisted?
-      sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
+    if user.persisted?
+      sign_in_and_redirect user, :event => :authentication #this will throw if @user is not activated
       set_flash_message(:notice, :success, :kind => auth.provider) if is_navigational_format?
     else
       session_key = :session_keys[auth.provider]

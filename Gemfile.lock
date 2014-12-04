@@ -57,9 +57,6 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
-    dotenv (1.0.2)
-    dotenv-rails (1.0.2)
-      dotenv (= 1.0.2)
     erubis (2.7.0)
     execjs (2.2.2)
     faraday (0.9.0)
@@ -210,7 +207,6 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   coveralls
   devise
-  dotenv-rails
   jbuilder (~> 2.0)
   jquery-rails
   omniauth-facebook
