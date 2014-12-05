@@ -5,14 +5,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
 	 :omniauthable, :omniauth_providers => [:facebook, :google_oauth2, :twitter, :linkedin, :github]
 
-  def self.find(provider, uid, name, email)
-    user = User.where(:email => email).first
+  has_many :uids
 
-    unless user
-      user = User.where(:provider => provider, :uid => uid).first
-    end
+  def self.find_by_email(email)
+    User.where(:email => email).first
+  end
 
-    user
+  def self.find_by_uid(uid)
+    User.joins(:uids).where(uids:{uid:uid}).first
   end
 
 end
