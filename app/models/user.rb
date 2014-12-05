@@ -15,4 +15,9 @@ class User < ActiveRecord::Base
     user
   end
 
+  def self.find_by_uid(uid)
+    #Uid.where(:)
+  end
+
+
 end
