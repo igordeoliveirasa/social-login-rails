@@ -7,14 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :uids
 
-  def self.find(provider, uid, name, email)
-    user = User.where(:email => email).first
-
-    unless user
-      user = User.where(:provider => provider, :uid => uid).first
-    end
-
-    user
+  def self.find_by_email(email)
+    User.where(:email => email).first
   end
 
   def self.find_by_uid(uid)
