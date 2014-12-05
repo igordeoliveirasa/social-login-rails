@@ -36,7 +36,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     unless user
       user = User.find_by_email(auth["email"])
+
+      if user
+        # creating uid as it doesnt exist yet
+        Uid.create(provider:auth["provider"], uid:auth["uid"], user:user)
+      end
+
     end
+
 
     # creating user if nil
     unless user
