@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'token_auth/sign_in'
+
   get 'dashboard/index'
 
   get 'home/index'
