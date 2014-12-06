@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
 
-
+# heroku needs
 ruby '2.0.0'
 gem 'rails_12factor'
 gem 'fb_graph'
+gem 'unicorn'
 
 gem 'dotenv-rails', :groups => [:development, :test]
 
