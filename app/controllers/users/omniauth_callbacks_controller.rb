@@ -38,34 +38,30 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
-  def facebook
+  def treat_omniauth_and_authenticate
     # convert to the same protocol
     auth = protocol_omniauth(request.env["omniauth.auth"])
     authenticate auth["provider"], auth["uid"], auth["email"]
+  end
+
+  def facebook
+    treat_omniauth_and_authenticate
   end
 
   def google_oauth2
-    # convert to the same protocol
-    auth = protocol_omniauth(request.env["omniauth.auth"])
-    authenticate auth["provider"], auth["uid"], auth["email"]
+    treat_omniauth_and_authenticate
   end
 
   def twitter
-    # convert to the same protocol
-    auth = protocol_omniauth(request.env["omniauth.auth"])
-    authenticate auth["provider"], auth["uid"], auth["email"]
+    treat_omniauth_and_authenticate
   end
 
   def linkedin
-    # convert to the same protocol
-    auth = protocol_omniauth(request.env["omniauth.auth"])
-    authenticate auth["provider"], auth["uid"], auth["email"]
+    treat_omniauth_and_authenticate
   end
 
   def github
-    # convert to the same protocol
-    auth = protocol_omniauth(request.env["omniauth.auth"])
-    authenticate auth["provider"], auth["uid"], auth["email"]
+    treat_omniauth_and_authenticate
   end
 
 end
