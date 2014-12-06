@@ -10,7 +10,9 @@ SimpleCov.start :rails do
 end
 
 require 'coveralls'
-Coveralls.wear!
+Coveralls.wear!('rails')
+
+
 
 
 require "codeclimate-test-reporter"
