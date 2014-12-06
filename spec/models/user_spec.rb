@@ -2,12 +2,6 @@ require 'rails_helper'
 
 RSpec.describe User, :type => :model do
 
-  # new user only uid
-  # new user only email
-  # login user only uid existent
-  # login user only uid not existent
-  # login user only
-
   it "should register new user from site" do
 
     provider = "facebook"
@@ -15,6 +9,11 @@ RSpec.describe User, :type => :model do
     email = "my@email.com"
 
     user = User.social_authentication(provider, uid, email)
+    expect(user).to be_nil
+
+    unless user
+      user = User.social_registration(provider, uid, email)
+    end
 
     expect(User.count).to eq(1)
     expect(Uid.count).to eq(1)
@@ -38,6 +37,10 @@ RSpec.describe User, :type => :model do
     uid = "123"
     email = "my@email.com"
     user = User.social_authentication(provider, uid, email)
+    expect(user).to be_nil
+    unless user
+      user = User.social_registration(provider, uid, email)
+    end
 
     # logging
     user = User.social_authentication(provider, uid, email)
@@ -63,6 +66,10 @@ RSpec.describe User, :type => :model do
     uid = "123"
     email = "my@email.com"
     user = User.social_authentication(provider, uid, email)
+    expect(user).to be_nil
+    unless user
+      user = User.social_registration(provider, uid, email)
+    end
 
     # logging
     user = User.social_authentication(provider, uid, nil)
@@ -88,12 +95,17 @@ RSpec.describe User, :type => :model do
     facebook_uid = "123"
     facebook_email = "my@email.com"
     facebook_user = User.social_authentication(facebook_provider, facebook_uid, facebook_email)
+    expect(facebook_user).to be_nil
+    unless facebook_user
+      facebook_user = User.social_registration(facebook_provider, facebook_uid, facebook_email)
+    end
 
     # registering the second using twitter
     linkedin_provider = "linkedin"
     linkedin_uid = "321"
     linkedin_email = "my@email.com"
     linkedin_user = User.social_authentication(linkedin_provider, linkedin_uid, linkedin_email)
+    expect(linkedin_user).not_to be_nil
 
     expect(User.count).to eq(1)
     expect(Uid.count).to eq(2)
@@ -104,8 +116,8 @@ RSpec.describe User, :type => :model do
     expect(facebook_user.email).to eq(facebook_email)
 
     expect(linkedin_user.persisted?).to be true
-    expect(linkedin_user.provider).to eq(linkedin_provider)
-    expect(linkedin_user.uid).to eq(linkedin_uid)
+    expect(linkedin_user.provider).to eq(facebook_provider) # the first register
+    expect(linkedin_user.uid).to eq(facebook_uid) # the first register
     expect(linkedin_user.email).to eq(linkedin_email)
 
     expect(linkedin_user.uids.first.persisted?).to be true
@@ -123,12 +135,22 @@ RSpec.describe User, :type => :model do
     facebook_uid = "123"
     facebook_email = "my@email.com"
     facebook_user = User.social_authentication(facebook_provider, facebook_uid, facebook_email)
+    expect(facebook_user).to be_nil
+    unless facebook_user
+      facebook_user = User.social_registration(facebook_provider, facebook_uid, facebook_email)
+    end
+
+
 
     # registering the second using twitter
     twitter_provider = "twitter"
     twitter_uid = "321"
     twitter_email = "321@twitter.com"
     twitter_user = User.social_authentication(twitter_provider, twitter_uid, twitter_email)
+    expect(twitter_user).to be_nil
+    unless twitter_user
+      twitter_user = User.social_registration(twitter_provider, twitter_uid, twitter_email)
+    end
 
     expect(User.count).to eq(2)
     expect(Uid.count).to eq(2)
@@ -150,5 +172,7 @@ RSpec.describe User, :type => :model do
 
     expect(facebook_user).not_to eq(twitter_user)
   end
+
+  # registrations ===========================
 
 end

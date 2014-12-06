@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  get 'token_auth/sign_in'
-
+  get 'token_authentication/authenticate'
   get 'dashboard/index'
-
   get 'home/index'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }

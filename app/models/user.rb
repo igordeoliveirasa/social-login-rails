@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
 
 
   def self.social_authentication(provider, uid, email)
-
     user = find_by_uid(uid)
 
     # there isn't uid registered, check email
@@ -30,13 +29,15 @@ class User < ActiveRecord::Base
         end
       end
     end
-
-    # there isn't uid neither email
-    unless user
-      user = User.create(provider: provider, uid:uid, email:email, password:Devise.friendly_token[0,20])
-      Uid.create(provider: provider, uid:uid, user:user)
-    end
     user
   end
+
+  def self.social_registration(provider, uid, email)
+    user = User.create(provider: provider, uid:uid, email:email, password:Devise.friendly_token[0,20])
+    Uid.create(provider: provider, uid:uid, user:user)
+    user
+  end
+
+
 
 end
