@@ -10,11 +10,8 @@ RSpec.describe TokenAuthenticationController, :type => :controller do
       provider = "facebook"
       uid = "100003363708252"
       email = "my@email.com"
-      user = User.social_registration(provider, uid, email)
-
-      # authenticating with token
       token = 'validtoken'
-      email = "my@email.com"
+      user = User.social_registration(provider, uid, email)
 
       # Mocking FBGraph
       graph_user_mock = FbGraph::User.new("mock")
@@ -36,12 +33,9 @@ RSpec.describe TokenAuthenticationController, :type => :controller do
 
     it "should register and return success" do
 
-      # registering at first...
       provider = "facebook"
       uid = "100003363708252"
       email = "my@email.com"
-
-      # authenticating with token
       token = 'validtoken'
 
       # Mocking FBGraph
@@ -68,19 +62,12 @@ RSpec.describe TokenAuthenticationController, :type => :controller do
       provider = "facebook"
       uid = "100003363708252"
       email = "my@email.com"
-      user = User.social_registration(provider, uid, email)
-
-      # authenticating with token
       token = 'invalidtoken'
-      email = "my@email.com"
+      user = User.social_registration(provider, uid, email)
 
       # Mocking FBGraph
       exception_message = "OAuthException :: Invalid OAuth access token."
       allow(FbGraph::User).to receive(:me).and_raise(FbGraph::InvalidToken.new exception_message)
-
-
-      # Mocking FBGraph
-      #FbGraph::User.stub(:me).and_raise(OAuthException)
 
       get :authenticate, { :format => :json, :provider=> provider, :token => token, :email => '' }
       json = JSON.parse(response.body)

@@ -8,7 +8,6 @@ class TokenAuthenticationController < ApplicationController
     token = params["token"]
     email = params["email"]
 
-
     begin
 
       graph_user = FbGraph::User.me(token)
