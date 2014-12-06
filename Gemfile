@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
+
 ruby '2.0.0p0'
 gem 'rails_12factor'
-
 gem 'fb_graph'
 
 gem 'dotenv-rails', :groups => [:development, :test]
