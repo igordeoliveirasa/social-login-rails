@@ -27,6 +27,7 @@ LINKEDIN_APP_SECRET=j0JQTuAZhHTg6vtk
 GITHUB_APP_ID=38b27b7cc776278c49b2
 GITHUB_APP_SECRET=a8fb0c1db81b9d9b87b0ba270e6ac4ef54f9756f
 ```
+These values are just an example. You must replace the values in order to point to your real variables.
 In production the environement variables won't be loaded. They must be set up on the real environment.
 
 Running the Server
