@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe TokenAuthenticationController, :type => :controller do
 
   describe "POST sign_in" do
+
     it "should return success since everything is right" do
       # registering at first...
       provider = "facebook"
