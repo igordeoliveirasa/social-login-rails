@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get 'token_authentication/authenticate'
+  post 'token_authentication/authenticate'
+
+  #match 'token_authentication/authenticate', to: 'token_authentication#authenticate', via: [:post]
+
   get 'dashboard/index'
   get 'home/index'
 

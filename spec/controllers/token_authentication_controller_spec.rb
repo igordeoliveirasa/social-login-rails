@@ -2,10 +2,8 @@ require 'rails_helper'
 
 RSpec.describe TokenAuthenticationController, :type => :controller do
 
-  describe "GET sign_in" do
+  describe "POST sign_in" do
     it "should return success since everything is right" do
-
-
       # registering at first...
       provider = "facebook"
       uid = "100003363708252"
@@ -20,7 +18,7 @@ RSpec.describe TokenAuthenticationController, :type => :controller do
       graph_user_mock_with_identifier.identifier = uid
       allow(graph_user_mock).to receive_messages(:fetch => graph_user_mock_with_identifier)
 
-      get :authenticate, { :format => :json, :provider=> provider, :token => token, :email => email }
+      post :authenticate, { :format => :json, :provider=> provider, :token => token, :email => email }
       json = JSON.parse(response.body)
       expect(response).to have_http_status(:success)
       #expect(response).to redirect_to(dashboard_index_path)
@@ -45,7 +43,7 @@ RSpec.describe TokenAuthenticationController, :type => :controller do
       graph_user_mock_with_identifier.identifier = uid
       allow(graph_user_mock).to receive_messages(:fetch => graph_user_mock_with_identifier)
 
-      get :authenticate, { :format => :json, :provider=> provider, :token => token, :email => email }
+      post :authenticate, { :format => :json, :provider=> provider, :token => token, :email => email }
       json = JSON.parse(response.body)
       expect(response).to have_http_status(:success)
       #expect(response).to redirect_to(dashboard_index_path)
@@ -69,7 +67,7 @@ RSpec.describe TokenAuthenticationController, :type => :controller do
       exception_message = "OAuthException :: Invalid OAuth access token."
       allow(FbGraph::User).to receive(:me).and_raise(FbGraph::InvalidToken.new exception_message)
 
-      get :authenticate, { :format => :json, :provider=> provider, :token => token, :email => '' }
+      post :authenticate, { :format => :json, :provider=> provider, :token => token, :email => '' }
       json = JSON.parse(response.body)
       expect(response).to have_http_status(:success)
       #expect(response).to redirect_to(dashboard_index_path)
