@@ -4,7 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   @session_keys = {"facebook" => "devise.facebook_data", "google_oauth2" => "devise.google_data",
                     "twitter" => "devise.twitter_uid", "linkedin" => "devise.linkedin_uid"}
 
-  def convert_omniauth_to_auth(auth)
+  def protocol_omniauth(auth)
 
     ret = {"provider" => auth.provider, "uid" => auth.uid, "name" => nil, "email" => nil}
 
@@ -22,32 +22,28 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     ret
   end
 
-  def create_user_with_auth(auth)
-    user = User.create(provider:auth["provider"], uid:auth["uid"], name:auth["name"], email:auth["email"], password:Devise.friendly_token[0,20],)
-    Uid.create(provider:auth["provider"], uid:auth["uid"], user:user)
-    user
-  end
-
-  def authenticate
-    auth = convert_omniauth_to_auth(request.env["omniauth.auth"])
-
+  def authenticate(auth)
     # search
     user = User.find_by_uid(auth["uid"])
-
     unless user
-      user = User.find_by_email(auth["email"])
 
-      if user
-        # creating uid as it doesnt exist yet
-        Uid.create(provider:auth["provider"], uid:auth["uid"], user:user)
+      if auth["email"]
+        user = User.find_by_email(auth["email"])
+        if user
+          uid = Uid.create(provider:auth["provider"], uid:auth["uid"], user:user)
+        end
       end
 
+      unless user
+        # creating user without e-mail but uid
+        user = User.create(provider:auth["provider"], uid:auth["uid"], name:auth["name"], email:auth["email"], password:Devise.friendly_token[0,20],)
+        uid = Uid.create(provider:auth["provider"], uid:auth["uid"], user:user)
+      end
     end
 
-
-    # creating user if nil
-    unless user
-      user = create_user_with_auth(auth)
+    # updating e-mail
+    if auth["email"]
+      user.email = auth["email"]
     end
 
     if user.persisted?
@@ -61,23 +57,33 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def facebook
-    authenticate
+    # convert to the same protocol
+    auth = protocol_omniauth(request.env["omniauth.auth"])
+    authenticate auth
   end
 
   def google_oauth2
-    authenticate
+    # convert to the same protocol
+    auth = protocol_omniauth(request.env["omniauth.auth"])
+    authenticate auth
   end
 
   def twitter
-    authenticate
+    # convert to the same protocol
+    auth = protocol_omniauth(request.env["omniauth.auth"])
+    authenticate auth
   end
 
   def linkedin
-    authenticate
+    # convert to the same protocol
+    auth = protocol_omniauth(request.env["omniauth.auth"])
+    authenticate auth
   end
 
   def github
-    authenticate
+    # convert to the same protocol
+    auth = protocol_omniauth(request.env["omniauth.auth"])
+    authenticate auth
   end
 
 end
