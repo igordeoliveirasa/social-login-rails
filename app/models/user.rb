@@ -33,12 +33,13 @@ class User < ActiveRecord::Base
   end
 
   def self.social_registration(user_to_be_reg)
-    user = User.create(provider: user_to_be_reg.provider, uid:user_to_be_reg.uid, email:user_to_be_reg.email, password:Devise.friendly_token[0,20],
-    name:user_to_be_reg.name)
-    Uid.create(provider: user_to_be_reg.provider, uid:user_to_be_reg.uid, user:user)
-    user
+    if user_to_be_reg.email and user_to_be_reg.uid and user_to_be_reg.provider
+      user_to_be_reg.password = Devise.friendly_token[0,20]
+      user_to_be_reg.save!
+      #user = User.create(provider: user_to_be_reg.provider, uid:user_to_be_reg.uid, email:user_to_be_reg.email, password:Devise.friendly_token[0,20], name:user_to_be_reg.name)
+      Uid.create(provider: user_to_be_reg.provider, uid:user_to_be_reg.uid, user:user_to_be_reg)
+      user_to_be_reg
+    end
   end
-
-
 
 end
