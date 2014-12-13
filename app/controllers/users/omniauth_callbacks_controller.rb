@@ -4,44 +4,64 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   @session_keys = {"facebook" => "devise.facebook_data", "google_oauth2" => "devise.google_data",
                     "twitter" => "devise.twitter_uid", "linkedin" => "devise.linkedin_uid"}
 
-  def protocol_omniauth(auth)
+  def omniauth_to_user(auth)
 
-    ret = {"provider" => auth.provider, "uid" => auth.uid, "name" => nil, "email" => nil}
+    #ret = {"provider" => auth.provider, "uid" => auth.uid, "name" => nil, "email" => nil, "image" => nil}
+    user = User.new(provider: auth.provider, uid: auth.uid)
 
     if ["facebook", "google_oauth2", "github"].include?(auth.provider)
-      ret['name'] = auth.info.name
-      ret['email'] = auth.info.email
+      user.name = auth.info.name
+      user.email = auth.info.email
+      user.image = auth.info.image
     elsif auth.provider == "twitter"
-      ret['name'] = auth.extra.raw_info.name
-      ret['email'] = auth.uid + "@twitter.com" if auth.uid
+      user.name = auth.info.name
+      user.email = auth.uid + "@twitter.com" if auth.uid
+      user.image = auth.info.image
     elsif auth.provider == "linkedin"
-      ret['name'] = auth.info.first_name
-      ret['email'] = auth.info.email
+      name = ""
+
+      if auth.info
+        if auth.info.first_name
+          name = auth.info.first_name
+          if auth.info.last_name
+            name += " " + auth.info.last_name
+          end
+        end
+      end
+
+      name = name.strip
+      user.name = name
+      user.email = auth.info.email
+      user.image = auth.info.image
     end
 
-    ret
+    user
   end
 
-  def authenticate(provider, uid, email)
-    user = User.social_authentication(provider, uid, email)
+  def authenticate(user_to_be_auth)
+    user = User.social_authentication(user_to_be_auth)
     unless user
-      user = User.social_registration(provider, uid, email)
+      user = User.social_registration(user_to_be_auth)
     end
 
-    if user.persisted?
+    if user and user.persisted?
       sign_in_and_redirect user, :event => :authentication #this will throw if @user is not activated
-      set_flash_message(:notice, :success, :kind => provider) if is_navigational_format?
+      set_flash_message(:notice, :success, :kind => user.provider) if is_navigational_format?
     else
-      session_key = :session_keys[provider]
+      session_key = :session_keys[user_to_be_auth.provider]
       session[session_key] = request.env["omniauth.auth"]
       redirect_to new_user_registration_url
     end
   end
 
-  def treat_omniauth_and_authenticate
+  def treat_omniauth
     # convert to the same protocol
-    auth = protocol_omniauth(request.env["omniauth.auth"])
-    authenticate auth["provider"], auth["uid"], auth["email"]
+    user = omniauth_to_user(request.env["omniauth.auth"])
+  end
+
+  def treat_omniauth_and_authenticate
+    user = treat_omniauth
+    authenticate user
   end
 
   def facebook

@@ -16,15 +16,15 @@ class User < ActiveRecord::Base
   end
 
 
-  def self.social_authentication(provider, uid, email)
-    user = find_by_uid(uid)
+  def self.social_authentication(user_to_be_auth)
+    user = find_by_uid(user_to_be_auth.uid)
 
     # there isn't uid registered, check email
     unless user
-      if email
-        user = find_by_email(email)
+      if user_to_be_auth.email
+        user = find_by_email(user_to_be_auth.email)
         if user
-          uid = Uid.create(provider: provider, uid:uid, user:user)
+          uid = Uid.create(provider: user_to_be_auth.provider, uid:user_to_be_auth.uid, user:user)
           user.uids << uid
         end
       end
@@ -32,12 +32,14 @@ class User < ActiveRecord::Base
     user
   end
 
-  def self.social_registration(provider, uid, email)
-    user = User.create(provider: provider, uid:uid, email:email, password:Devise.friendly_token[0,20])
-    Uid.create(provider: provider, uid:uid, user:user)
-    user
+  def self.social_registration(user_to_be_reg)
+    if user_to_be_reg.email and user_to_be_reg.uid and user_to_be_reg.provider
+      user_to_be_reg.password = Devise.friendly_token[0,20]
+      user_to_be_reg.save!
+      #user = User.create(provider: user_to_be_reg.provider, uid:user_to_be_reg.uid, email:user_to_be_reg.email, password:Devise.friendly_token[0,20], name:user_to_be_reg.name)
+      Uid.create(provider: user_to_be_reg.provider, uid:user_to_be_reg.uid, user:user_to_be_reg)
+      user_to_be_reg
+    end
   end
-
-
 
 end
