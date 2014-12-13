@@ -22,26 +22,31 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     ret
   end
 
-  def authenticate(provider, uid, email)
-    user = User.social_authentication(provider, uid, email)
+  def authenticate(user_to_be_auth)
+    user = User.social_authentication(user_to_be_auth)
     unless user
-      user = User.social_registration(provider, uid, email)
+      user = User.social_registration(user_to_be_auth)
     end
 
     if user.persisted?
       sign_in_and_redirect user, :event => :authentication #this will throw if @user is not activated
-      set_flash_message(:notice, :success, :kind => provider) if is_navigational_format?
+      set_flash_message(:notice, :success, :kind => user.provider) if is_navigational_format?
     else
-      session_key = :session_keys[provider]
+      session_key = :session_keys[user.provider]
       session[session_key] = request.env["omniauth.auth"]
       redirect_to new_user_registration_url
     end
   end
 
-  def treat_omniauth_and_authenticate
+  def treat_omniauth
     # convert to the same protocol
     auth = protocol_omniauth(request.env["omniauth.auth"])
-    authenticate auth["provider"], auth["uid"], auth["email"]
+    user = User.new(:provider => auth["provider"], :uid => auth["uid"], :email => auth["email"], :name => auth["name"])
+  end
+
+  def treat_omniauth_and_authenticate
+    user = treat_omniauth
+    authenticate user
   end
 
   def facebook

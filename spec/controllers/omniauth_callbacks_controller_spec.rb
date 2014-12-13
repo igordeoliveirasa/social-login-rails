@@ -10,12 +10,17 @@ RSpec.describe Users::OmniauthCallbacksController, :type => :controller do
       OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
                                                                         :provider => 'facebook',
                                                                         :uid => '123545',
-                                                                        :info => { :email => 'igordeoliveirasa@gmail.com',  :name => '', },
+                                                                        :info => { :email => 'igordeoliveirasa@gmail.com',  :name => 'Igor de Oliveira Sá', },
                                                                     })
 
       request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook]
       get :facebook
     end
+
+    it {
+      user = User.first
+      expect(user.name).to eq("Igor de Oliveira Sá")
+    }
 
     it { should be_user_signed_in }
     it { expect(response).to redirect_to(dashboard_index_path) }

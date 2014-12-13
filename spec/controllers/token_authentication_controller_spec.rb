@@ -10,7 +10,10 @@ RSpec.describe TokenAuthenticationController, :type => :controller do
       uid = "100003363708252"
       email = "my@email.com"
       token = 'validtoken'
-      user = User.social_registration(provider, uid, email)
+
+      user_to_be_reg = User.new(provider: provider, uid: uid, email: email)
+
+      user = User.social_registration(user_to_be_reg)
 
       # Mocking FBGraph
       graph_user_mock = FbGraph::User.new("mock")
@@ -62,7 +65,10 @@ RSpec.describe TokenAuthenticationController, :type => :controller do
       uid = "100003363708252"
       email = "my@email.com"
       token = 'invalidtoken'
-      user = User.social_registration(provider, uid, email)
+
+      user_to_be_reg = User.new(provider: provider, uid: uid, email: email)
+
+      user = User.social_registration(user_to_be_reg)
 
       # Mocking FBGraph
       exception_message = "OAuthException :: Invalid OAuth access token."

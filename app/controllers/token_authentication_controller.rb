@@ -19,9 +19,11 @@ class TokenAuthenticationController < ApplicationController
 
         uid = graph_user.identifier
 
-        user = User.social_authentication(provider, uid, email)
+        user_to_be_auth = User.new(provider: provider, uid: uid, email: email)
+
+        user = User.social_authentication(user_to_be_auth)
         unless user
-          user = User.social_registration(provider, uid, email)
+          user = User.social_registration(user_to_be_auth)
         end
         sign_in user
 

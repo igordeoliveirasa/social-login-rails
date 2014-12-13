@@ -8,11 +8,13 @@ RSpec.describe User, :type => :model do
     uid = "123"
     email = "my@email.com"
 
-    user = User.social_authentication(provider, uid, email)
+    user_to_be_auth = User.new(provider: provider, uid: uid, email: email)
+
+    user = User.social_authentication(user_to_be_auth)
     expect(user).to be_nil
 
     unless user
-      user = User.social_registration(provider, uid, email)
+      user = User.social_registration(user_to_be_auth)
     end
 
     expect(User.count).to eq(1)
@@ -36,14 +38,17 @@ RSpec.describe User, :type => :model do
     provider = "facebook"
     uid = "123"
     email = "my@email.com"
-    user = User.social_authentication(provider, uid, email)
+
+    user_to_be_auth = User.new(provider: provider, uid: uid, email: email)
+
+    user = User.social_authentication(user_to_be_auth)
     expect(user).to be_nil
     unless user
-      user = User.social_registration(provider, uid, email)
+      user = User.social_registration(user_to_be_auth)
     end
 
     # logging
-    user = User.social_authentication(provider, uid, email)
+    user = User.social_authentication(user_to_be_auth)
 
     expect(User.count).to eq(1)
     expect(Uid.count).to eq(1)
@@ -65,14 +70,18 @@ RSpec.describe User, :type => :model do
     provider = "facebook"
     uid = "123"
     email = "my@email.com"
-    user = User.social_authentication(provider, uid, email)
+
+    user_to_be_auth = User.new(provider: provider, uid: uid, email: email)
+
+    user = User.social_authentication(user_to_be_auth)
     expect(user).to be_nil
     unless user
-      user = User.social_registration(provider, uid, email)
+      user = User.social_registration(user_to_be_auth)
     end
 
     # logging
-    user = User.social_authentication(provider, uid, nil)
+    user_to_be_auth.email = nil
+    user = User.social_authentication(user_to_be_auth)
 
     expect(User.count).to eq(1)
     expect(Uid.count).to eq(1)
@@ -94,17 +103,24 @@ RSpec.describe User, :type => :model do
     facebook_provider = "facebook"
     facebook_uid = "123"
     facebook_email = "my@email.com"
-    facebook_user = User.social_authentication(facebook_provider, facebook_uid, facebook_email)
+
+    facebook_user_to_be_auth = User.new(provider: facebook_provider, uid: facebook_uid, email: facebook_email)
+
+    facebook_user = User.social_authentication(facebook_user_to_be_auth)
     expect(facebook_user).to be_nil
     unless facebook_user
-      facebook_user = User.social_registration(facebook_provider, facebook_uid, facebook_email)
+      facebook_user = User.social_registration(facebook_user_to_be_auth)
     end
 
     # registering the second using twitter
     linkedin_provider = "linkedin"
     linkedin_uid = "321"
     linkedin_email = "my@email.com"
-    linkedin_user = User.social_authentication(linkedin_provider, linkedin_uid, linkedin_email)
+
+    linkedin_user_to_be_auth = User.new(provider: linkedin_provider, uid: linkedin_uid, email: linkedin_email)
+
+    linkedin_user = User.social_authentication(linkedin_user_to_be_auth)
+
     expect(linkedin_user).not_to be_nil
 
     expect(User.count).to eq(1)
@@ -134,10 +150,14 @@ RSpec.describe User, :type => :model do
     facebook_provider = "facebook"
     facebook_uid = "123"
     facebook_email = "my@email.com"
-    facebook_user = User.social_authentication(facebook_provider, facebook_uid, facebook_email)
+
+    facebook_user_to_be_auth = User.new(provider: facebook_provider, uid: facebook_uid, email: facebook_email)
+
+    facebook_user = User.social_authentication(facebook_user_to_be_auth)
+
     expect(facebook_user).to be_nil
     unless facebook_user
-      facebook_user = User.social_registration(facebook_provider, facebook_uid, facebook_email)
+      facebook_user = User.social_registration(facebook_user_to_be_auth)
     end
 
 
@@ -146,10 +166,13 @@ RSpec.describe User, :type => :model do
     twitter_provider = "twitter"
     twitter_uid = "321"
     twitter_email = "321@twitter.com"
-    twitter_user = User.social_authentication(twitter_provider, twitter_uid, twitter_email)
+
+    twitter_user_to_be_auth = User.new(provider: twitter_provider, uid: twitter_uid, email: twitter_email)
+
+    twitter_user = User.social_authentication(twitter_user_to_be_auth)
     expect(twitter_user).to be_nil
     unless twitter_user
-      twitter_user = User.social_registration(twitter_provider, twitter_uid, twitter_email)
+      twitter_user = User.social_registration(twitter_user_to_be_auth)
     end
 
     expect(User.count).to eq(2)
