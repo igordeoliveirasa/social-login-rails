@@ -12,10 +12,22 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       ret['name'] = auth.info.name
       ret['email'] = auth.info.email
     elsif auth.provider == "twitter"
-      ret['name'] = auth.extra.raw_info.name
+      ret['name'] = auth.info.name
       ret['email'] = auth.uid + "@twitter.com" if auth.uid
     elsif auth.provider == "linkedin"
-      ret['name'] = auth.info.first_name
+      name = ""
+
+      if auth.info
+        if auth.info.first_name
+          name = auth.info.first_name
+          if auth.info.last_name
+            name += " " + auth.info.last_name
+          end
+        end
+      end
+
+      name = name.strip
+      ret['name'] = name
       ret['email'] = auth.info.email
     end
 
