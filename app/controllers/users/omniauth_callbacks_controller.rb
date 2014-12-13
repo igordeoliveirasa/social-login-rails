@@ -4,30 +4,30 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   @session_keys = {"facebook" => "devise.facebook_data", "google_oauth2" => "devise.google_data",
                     "twitter" => "devise.twitter_uid", "linkedin" => "devise.linkedin_uid"}
 
-  def omniauth_to_user(auth)
 
-    user = User.new(provider: auth.provider, uid: auth.uid)
-
+  def get_oauth_email(auth)
     if auth.provider == "twitter"
-      auth.info["email"] = auth.uid + "@twitter.com" if auth.uid
-    elsif auth.provider == "linkedin"
-      name = ""
-      if auth.info
-        if auth.info.first_name
-          name = auth.info.first_name
-          if auth.info.last_name
-            name += " " + auth.info.last_name
-          end
-        end
-      end
-      auth.info["name"] = name.strip
+      auth.uid + "@twitter.com" if auth.uid
+    else
+      auth.info.email
     end
+  end
 
-    user.name = auth.info.name
-    user.email = auth.info.email
-    user.image = auth.info.image
+  def get_oauth_name(auth)
+    if auth.provider == "linkedin"
+      (auth.info.first_name + " " + auth.info.last_name).strip
+    else
+      auth.info.name
+    end
+  end
 
-    user
+  def omniauth_to_user(auth)
+    user = User.new(
+        provider: auth.provider,
+        uid: auth.uid,
+        name: get_oauth_name(auth),
+        email: get_oauth_email(auth),
+        image:auth.info.image)
   end
 
   def authenticate(user_to_be_auth)

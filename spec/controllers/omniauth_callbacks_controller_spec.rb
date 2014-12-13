@@ -118,7 +118,7 @@ RSpec.describe Users::OmniauthCallbacksController, :type => :controller do
       OmniAuth.config.mock_auth[:linkedin] = OmniAuth::AuthHash.new({
                                                                         :provider => 'linkedin',
                                                                         :uid => '123545',
-                                                                        :info => { :first_name => '', },
+                                                                        :info => { :first_name => '', :last_name => '' },
                                                                     })
       request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:linkedin]
       get :linkedin
