@@ -6,20 +6,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def omniauth_to_user(auth)
 
-    #ret = {"provider" => auth.provider, "uid" => auth.uid, "name" => nil, "email" => nil, "image" => nil}
     user = User.new(provider: auth.provider, uid: auth.uid)
 
-    if ["facebook", "google_oauth2", "github"].include?(auth.provider)
-      user.name = auth.info.name
-      user.email = auth.info.email
-      user.image = auth.info.image
-    elsif auth.provider == "twitter"
-      user.name = auth.info.name
-      user.email = auth.uid + "@twitter.com" if auth.uid
-      user.image = auth.info.image
+    if auth.provider == "twitter"
+      auth.info["email"] = auth.uid + "@twitter.com" if auth.uid
     elsif auth.provider == "linkedin"
       name = ""
-
       if auth.info
         if auth.info.first_name
           name = auth.info.first_name
@@ -28,12 +20,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           end
         end
       end
-
-      name = name.strip
-      user.name = name
-      user.email = auth.info.email
-      user.image = auth.info.image
+      auth.info["name"] = name.strip
     end
+
+    user.name = auth.info.name
+    user.email = auth.info.email
+    user.image = auth.info.image
 
     user
   end
